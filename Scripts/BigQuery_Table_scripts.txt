@@ -1,0 +1,94 @@
+CREATE TABLE academic-pier-405912.Uber_data_21k4077.datetime_dim (
+  datetime_id INT64,
+  tpep_pickup_datetime TIMESTAMP,
+  pick_hour INT64,
+  pick_day INT64,
+  pick_month INT64,
+  pick_year INT64,
+  pick_weekday INT64,
+  tpep_dropoff_datetime TIMESTAMP,
+  drop_hour INT64,
+  drop_day INT64,
+  drop_month INT64,
+  drop_year INT64,
+  drop_weekday INT64
+);
+
+CREATE TABLE academic-pier-405912.Uber_data_21k4077.passenger_count_dim (
+  passenger_count_id INT64,
+  passenger_count INT64
+);
+
+CREATE TABLE academic-pier-405912.Uber_data_21k4077.trip_distance_dim (
+  trip_distance_id INT64,
+  trip_distance FLOAT64
+);
+
+CREATE TABLE academic-pier-405912.Uber_data_21k4077.rate_code_dim (
+  rate_code_id INT64,
+  RatecodeID INT64,
+  rate_code_name STRING
+);
+
+
+CREATE TABLE academic-pier-405912.Uber_data_21k4077.pickup_location_dim (
+  pickup_location_id INT64,
+  pickup_location GEOGRAPHY
+);
+
+CREATE TABLE academic-pier-405912.Uber_data_21k4077.dropoff_location_dim (
+  dropoff_location_id INT64,
+  dropoff_location GEOGRAPHY
+);
+
+CREATE TABLE academic-pier-405912.Uber_data_21k4077.payment_type_dim (
+  payment_type_id INT64,
+  payment_type INT64,
+  payment_type_name STRING
+);
+
+CREATE TABLE academic-pier-405912.Uber_data_21k4077.fact_table (
+  trip_id INT64,
+  VendorID INT64,
+  datetime_id INT64,
+  passenger_count_id INT64,
+  trip_distance_id INT64,
+  rate_code_id INT64,
+  store_and_fwd_flag STRING,
+  pickup_location_id INT64,
+  dropoff_location_id INT64,
+  payment_type_id INT64,
+  fare_amount FLOAT64,
+  extra FLOAT64,
+  mta_tax FLOAT64,
+  tip_amount FLOAT64,
+  tolls_amount FLOAT64,
+  improvement_surcharge FLOAT64,
+  total_amount FLOAT64
+);
+
+
+
+=======================DELETE========================================
+
+DELETE from academic-pier-405912.Uber_data_21k4077.datetime_dim where true;
+DELETE from academic-pier-405912.Uber_data_21k4077.dropoff_location_dim where true;
+DELETE from academic-pier-405912.Uber_data_21k4077.fact_table where true;
+DELETE from academic-pier-405912.Uber_data_21k4077.passenger_count_dim where true;
+DELETE from academic-pier-405912.Uber_data_21k4077.payment_type_dim where true;
+DELETE from academic-pier-405912.Uber_data_21k4077.pickup_location_dim where true;
+DELETE from academic-pier-405912.Uber_data_21k4077.rate_code_dim where true;
+DELETE from academic-pier-405912.Uber_data_21k4077.trip_distance_dim where true;
+DELETE from academic-pier-405912.Uber_data_21k4077.tbl_analytics where true;
+
+
+=======================COUNT==========================================
+
+select COUNT(*) from academic-pier-405912.Uber_data_21k4077.datetime_dim UNION ALL
+select COUNT(*) from academic-pier-405912.Uber_data_21k4077.dropoff_location_dim UNION ALL
+select COUNT(*) from academic-pier-405912.Uber_data_21k4077.fact_table UNION ALL
+select COUNT(*) from academic-pier-405912.Uber_data_21k4077.passenger_count_dim UNION ALL
+select COUNT(*) from academic-pier-405912.Uber_data_21k4077.payment_type_dim UNION ALL
+select COUNT(*) from academic-pier-405912.Uber_data_21k4077.pickup_location_dim UNION ALL
+select COUNT(*) from academic-pier-405912.Uber_data_21k4077.rate_code_dim UNION ALL
+select COUNT(*) from academic-pier-405912.Uber_data_21k4077.trip_distance_dim;
